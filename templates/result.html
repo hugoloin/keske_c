@@ -1,0 +1,34 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Résultats de recherche</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4 text-center">Résultats de recherche</h1>
+
+        {% if movie %}
+        <div class="card mx-auto" style="width: 40rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ movie.title }}</h5>
+                <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" class="rounded mx-auto d-block" alt="{{ movie.title }}">
+                <p class="card-text">Date de sortie : {{ movie.release_date }}</p>
+                <p class="card-text">Description : {{ movie.overview }}</p>
+                <p class="card-text">Note du film : {{ movie.vote_average }}</p>
+                <p class="card-text">Film pour Adulte : {{ "Oui" if movie.adult else "Non" }}</p>
+                <p class="card-text">Genres : {{ ", ".join(genres) }}</p>
+                <p class="card-text">Budget : {{ budget }}</p>
+                <p class="card-text">Durée : {{ runtime }} minutes</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('index') }}" class="btn btn-primary">Retour à la recherche</a>
+        </div>
+    </div>
+</body>
+</html>
