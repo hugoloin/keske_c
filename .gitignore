@@ -1,0 +1,3 @@
+# Exclure app.py qui contient les tokens API
+config.py
+#gitlab
