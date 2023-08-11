@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request
 import requests
 from config import MOVIE_DB_API_KEY
+import os
 
 app = Flask(__name__)
 
-TOKEN_TMDB = MOVIE_DB_API_KEY
+TOKEN_TMDB = os.environ.get('MOVIE_DB_API_KEY')
 
 # Correspondance des genres de film
 genre_mapping = {
